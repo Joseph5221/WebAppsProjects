@@ -1,6 +1,10 @@
 import express from "express";
+import ItemsRouter from "./items.js";
 
 const StoresRouter = express.Router();
+
+ItemsRouter.mergeParams = true;
+StoresRouter.use("/:store_id/items", ItemsRouter);
 
 StoresRouter.get("/", async (req, res) => {
   const db = await req.app.get("db")("stores");
@@ -15,14 +19,6 @@ StoresRouter.get("/:store_id", async (req, res) =>{
   console.log(storeId);
   const matchingStore = await db.findOne({ _id: Number(storeId) });
   res.json(matchingStore);
-});
-
-StoresRouter.get("/:store_id/items", async (req, res) =>{
-  const db = await req.app.get("db")("items");
-  const itemId = req.params.store_id;
-  const allItems = await db.find().toArray();
-  const matchingItems = await db.find({ StoreID: Number(itemId) }).toArray();
-  res.json(matchingItems);
 });
 
 StoresRouter.post("/", async (req, res) => {
