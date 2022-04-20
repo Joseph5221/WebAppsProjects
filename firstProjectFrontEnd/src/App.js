@@ -4,20 +4,22 @@ import "./App.css";
 import Class from "./Class";
 import Students from "./Students";
 
+
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Classes />} />
-          <Route path="classes" element={<Classes />} />
-          <Route path="classes/:classId">
-            <Route path="" element={<Class />} />
-            <Route path="students" element={<Students />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="/stores"/>
+		  <Route index element={<Stores />} />
+		  <Route path=":storeid/items" element={<StoreInventory />} />
+		  <Route path=":store_id/items/:item_id" element={<Item />} />
+		  <Route path=":store_id/items/new" element={<NewItem />} />
+
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
