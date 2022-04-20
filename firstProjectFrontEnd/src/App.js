@@ -1,25 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Classes from "./Classes";
+import Stores from "./Stores";
 import "./App.css";
-import Class from "./Class";
-import Students from "./Students";
+import Store from "./Store";
+import Items from "./Items";
 
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="/stores"/>
-		  <Route index element={<Stores />} />
-		  <Route path=":storeid/items" element={<StoreInventory />} />
-		  <Route path=":store_id/items/:item_id" element={<Item />} />
-		  <Route path=":store_id/items/new" element={<NewItem />} />
-
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Stores />} />
+          <Route path="stores" element={<Stores />} />
+          <Route path="stores/:storeId">
+            <Route path="" element={<Store />} />
+            <Route path="items" element={<Items />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

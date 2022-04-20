@@ -11,6 +11,8 @@ import connect from "./lib/db.js";
 import StoresRouter from "./routes/stores.js";
 import ItemsRouter from "./routes/items.js";
 
+import cors from "cors";
+
 const app = express();
 
 app.set("db", async (collection) => {
@@ -20,6 +22,7 @@ app.set("db", async (collection) => {
 
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

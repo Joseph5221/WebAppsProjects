@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-function Students() {
+function Items() {
   const { classId } = useParams();
-  const [students, setStudents] = useState([]);
+  const [items, setItems] = useState([]);
 
   // Runs on page render or when classId changes, but that happens on re-render
   useEffect(() => {
-    fetch(`http://localhost:8000/classes/${classId}/students`)
+    fetch(`http://localhost:8000/classes/${classId}/items`)
       .then((body) => body.json())
-      .then((json) => setStudents(() => [...json.students]));
+      .then((json) => setItems(() => [...json.items]));
   }, [classId]);
 
   return (
     <ul>
-      {students.map((student) => (
-        <li key={student._id}>{student.name}</li>
+      {items.map((item) => (
+        <li key={item._id}>{item.name}</li>
       ))}
     </ul>
   );
 }
 
-export default Students;
+export default Items;
