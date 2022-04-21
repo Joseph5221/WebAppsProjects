@@ -3,6 +3,8 @@ import Stores from "./Stores";
 import "./App.css";
 import Store from "./Store";
 import Items from "./Items";
+import Item from "./Item";
+import NewItem from "./NewItem"
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
           <Route path="stores/:storeId/">
             <Route path="" element={<Store />} />
             <Route path="items" element={<Items />} />
+            <Route path="items/new" element={<NewItem />} />
+            <Route path="items/:itemId" element={<Item/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
