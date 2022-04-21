@@ -17,7 +17,7 @@ function NewItem() {
     return (
       <>
         <h1>New Item for store:</h1>
-        <form >
+        <form id="form">
             <label htmlFor="ItemName"> Item Name: </label>
                 <input id="ItemName" name="ItemName"></input>
                 <br/>
@@ -29,7 +29,30 @@ function NewItem() {
                 <br/>
                 <input type="submit" value="Add an Item to the store!"></input>
         </form>
+    
+    <script>
+
+        {/* function submitForm(ItemName, ItemQuantity, ItemPrice) {
+            useEffect(() => {
+                fetch(`http://localhost:8000/stores/${storeId}/item`, 
+                {
+                    method: 'PUT',
+                    headers: { 'Content-Type':'application/json'}
+                },
+                body : JSON.stringify(ItemName.toString() + ItemQuantity.toString() + ItemPrice.toString())
+            });
+        } */}
+        function handleFormSubmit(e) {
+
+        }
+        let ItemName = getElementById('ItemName').value;
+        let ItemQuantity = getElementById("ItemQuantity").value;
+        let ItemPrice = getElementById("ItemPrice").value;
+        let form = getElementById("form")
+        form.onSubmit = handleFormSubmit;
+    </script>
     </>
+
   );
 }
 
