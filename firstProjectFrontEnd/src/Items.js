@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 function Items() {
-  const { classId } = useParams();
+  const { storeId } = useParams();
   const [items, setItems] = useState([]);
 
   // Runs on page render or when classId changes, but that happens on re-render
   useEffect(() => {
-    fetch(`http://localhost:8000/classes/${classId}/items`)
+    fetch(`http://localhost:8000/stores/${storeId}/items`)
       .then((body) => body.json())
-      .then((json) => setItems(() => [...json.items]));
-  }, [classId]);
+      .then((json) => setItems(() => [...json]));
+  }, [storeId]);
 
   return (
     <ul>
       {items.map((item) => (
-        <li key={item._id}>{item.name}</li>
+        <li key={item._id}>
+          <Link to={`/stores/${storeId}/items/${item._id}`}>{item.name}</Link>
+          </li>
       ))}
     </ul>
   );
