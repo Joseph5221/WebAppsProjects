@@ -18,6 +18,9 @@ function Items() {
           <Link to={`/stores/${storeId}/items/${item._id}`}>{item.name}</Link>
           </li>
       ))}
+            <li>
+            <Link to={`/stores/${storeId}/items/new`}>Make a new item!</Link>
+          </li>
     </ul>
   );
 }
