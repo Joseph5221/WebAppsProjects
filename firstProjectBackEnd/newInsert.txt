@@ -1,0 +1,14 @@
+db.stores.insertMany([
+{
+	name: "Bonfire Burritos",
+	location: "Golden",
+},
+{
+	name: "Kickin Chicken",
+	location: "Lakewood",
+},
+{
+	name: "Blazing Bird",
+	location: "Arvada",
+},
+]);

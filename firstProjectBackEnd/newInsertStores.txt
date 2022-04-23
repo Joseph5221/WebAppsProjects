@@ -1,0 +1,47 @@
+db.stores.insertMany([
+{
+	name: "Bonfire Burritos",
+	location: "Golden",
+},
+{
+	name: "Kickin Chicken",
+	location: "Lakewood",
+},
+{
+	name: "Blazing Bird",
+	location: "Arvada",
+},
+]);
+
+db.items.insertMany([
+{
+	name: "Burro",
+	Quantity: 100,
+	Price: 10.25,
+	StoreID: 1
+},
+{
+	name: "Chicken and Waffles",
+	Quantity: 50,
+	Price: 12.75,
+	StoreID: 2
+},
+{
+	name: "Hot Chicken Fries",
+	Quantity: 25,
+	Price: 11.50,
+	StoreID: 3
+},
+{
+	name: "Hot Chicken Sandwich",
+	Quantity: 150,
+	Price: 10.50,
+	StoreID: 2
+},
+{
+	name: "Caesar Salad",
+	Quantity: 40,
+	Price: 12.00,
+	StoreID: 3
+},
+]);
