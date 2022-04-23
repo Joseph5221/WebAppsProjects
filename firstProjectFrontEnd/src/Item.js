@@ -9,7 +9,7 @@ function Item() {
 
   // Runs on page render or when itemId changes, but that happens on re-render
   useEffect(() => {
-    fetch(`http://localhost:8000/items/${itemId}`)
+    fetch(`http://localhost:8000/items/${itemId.toString()}`)
       .then((body) => body.json())
       .then((json) => setItem(() => json));
   }, [itemId]);

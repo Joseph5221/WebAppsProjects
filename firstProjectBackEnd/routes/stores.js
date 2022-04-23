@@ -1,5 +1,6 @@
 import express from "express";
 import ItemsRouter from "./items.js";
+import {ObjectId} from "mongodb";
 
 const StoresRouter = express.Router();
 
@@ -19,7 +20,7 @@ StoresRouter.get("/:store_id", async (req, res) =>{
   const db = await req.app.get("db")("stores");
   const storeId = req.params.store_id;
   console.log(storeId);
-  const matchingStore = await db.findOne({ _id: Number(storeId) });
+  const matchingStore = await db.findOne({ _id: ObjectId(storeId) });
   res.json(matchingStore);
 });
 
@@ -40,7 +41,7 @@ StoresRouter.put("/:store_id", async (req, res) => {
   const replacedStore = req.body;
   await db.replaceOne(
     {
-     _id: Number(req.params.store_id),
+     _id: ObjectID(req.params.store_id),
    },
    {
      ...replacedStore,
@@ -52,7 +53,7 @@ StoresRouter.put("/:store_id", async (req, res) => {
 
 StoresRouter.delete("/:store_id", async (req, res) => {
   const db = await req.app.get("db")("stores");
-  await db.deleteOne({ _id: Number(req.params.store_id) });
+  await db.deleteOne({ _id: ObjectID(req.params.store_id) });
   res.sendStatus(200);
 });
 
