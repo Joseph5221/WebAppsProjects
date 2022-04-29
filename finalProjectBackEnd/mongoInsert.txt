@@ -1,55 +1,56 @@
-db.stores.insertMany([
+db.brands.insertMany([
 {
 	_id: 1,
-	name: "Bonfire Burritos",
-	location: "Golden",
+	title: "Chevrolet",
 },
 {
 	_id: 2,
-	name: "Kickin Chicken",
-	location: "Lakewood",
+	title: "Hyundai",
 },
 {
 	_id: 3,
-	name: "Blazing Bird",
-	location: "Arvada",
+	title: "Ford"
+},
+{
+	_id_ 4,
+	title: "Mitsubishi"
 },
 ]);
 
-db.items.insertMany([
+db.models.insertMany([
 {
 	_id: 1,
-	name: "Burro",
-	Quantity: 100,
-	Price: 10.25,
-	StoreID: 1
+	title: "Silverado",
+	description: "Full Size Pickup Truck",
+	good_gas: false,
+	BrandID: 1
 },
 {
 	_id: 2,
-	name: "Chicken and Waffles",
-	Quantity: 50,
-	Price: 12.75,
-	StoreID: 2
+	title: "Elantra",
+	description: "Mid-Size Sedan",
+	good_gas: true,
+	BrandID: 2
 },
 {
 	_id: 3,
-	name: "Hot Chicken Fries",
-	Quantity: 25,
-	Price: 11.50,
-	StoreID: 3
+	title: "Mustang",
+	description: "Two-Door Muscle Car",
+	good_gas: false,
+	BrandID: 3
 },
 {
 	_id: 4,
-	name: "Hot Chicken Sandwich",
-	Quantity: 150,
-	Price: 10.50,
-	StoreID: 2
+	title: "Eclipse",
+	description: "FWD Coupe",
+	good_gas: true,
+	BrandID: 4
 },
 {
 	_id: 5,
-	name: "Caesar Salad",
-	Quantity: 40,
-	Price: 12.00,
-	StoreID: 3
+	title: "Corvette",
+	description: "Mid-Engine Sports Car"
+	good_gas: false;
+	BrandID: 2
 },
 ]);
