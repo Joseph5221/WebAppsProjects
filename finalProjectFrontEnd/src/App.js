@@ -5,6 +5,9 @@ import Store from "./Store";
 import Items from "./Items";
 import Item from "./Item";
 import NewItem from "./NewItem"
+import Model from "./Model";
+import Models from "./Models";
+
 
 
 function App() {
@@ -14,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Stores />} />
           <Route path="stores" element={<Stores />} />
+          <Route path="models" element={<Models />} />
           <Route path="stores/:storeId/">
             <Route path="" element={<Store />} />
             <Route path="items" element={<Items />} />
