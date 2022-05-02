@@ -1,23 +1,17 @@
-Team Member Contributions:
-
-Jaidynn Fohr: 0.33
-John Konchar: 0.33
-Joseph Spielman: 0.33
-
-
 Criteria
-Backend (15)
-- [X] Each route specified has been defined on the backend server (3 points each)
-Frontend (24)
-- [X] The specified routes are defined using React Router (4)
-- [X] The /stores route displays a listing of all stores (4)
-- [X] The /stores/:store_id/items route displays all items for that specific store (4)
-- [X] The /stores/:store_id/items/:item_id route displays the name, quantity, and price of a specific item (4)
-- [X] The /stores/:store_id/items/new route displays a form to create a new item. This should be a form accepting the name, quantity, and price. The data should be posted to the server and persisted to the database (6)
-- [X] Some CSS is included to style the page accordingly. Not much emphasis will be put on appearance as we're focusing on functionality here. Make it look as nice as you want it to, but use some CSS (at least two rules) (2)
-Data Model (7)
-- [X] The entities use (at a minimum) the specified properties (7 points)
-Grading (4)
-- [X] Include a text file rating the effort each team member put into the project
-    - [X] These ratings should add up to 1; if all team members contributed equitably, rate each person 0.33; adjust as-needed (2)
-- [x] Zip up your code for grading (2)
+ - [ ] Data Model (6)
+	- [ ] The final project includes at least two models/collections (6; three points for each entity)
+	- [ ] See the Todo Project description for an idea of what this looks like
+ - [ ] Backend (20)
+	- [ ] GET (both / and /:thingId), POST, PUT, and DELETE routes are provided for each of the two entities (20; two points per route)
+	- [ ] Remember that for a REST API, the GET route is for all entities and also for a specific entity (fetched by ID)
+ - [ ] Frontend (26)
+	- [ ] At least four frontend routes to create, read, update, and delete the entities created in the data model (16)
+	- [ ] Four points per route to take into account data fetching, state management, and interactivity in form submission, etc
+	- [ ] Some CSS styling; at least ten styles (10)
+	- [ ] Using a CSS framework like Bootstrap or Tailwind is substitutable for the ten style requirement. This also should help speed up the process of styling the project.
+ - [ ] Grading (6)
+	- [ ] Zip up your code (2)
+	- [ ] Include a README with notes on how to run the project if any special steps were taken (2)
+	- [ ] Include a text file rating the effort each team member put into the project
+	- [ ] These ratings should add up to 1; if all team members contributed equitably, rate each person 0.33; adjust as-needed (2)
