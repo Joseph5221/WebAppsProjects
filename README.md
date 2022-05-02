@@ -6,7 +6,7 @@ Criteria
 	- [ ] GET (both / and /:thingId), POST, PUT, and DELETE routes are provided for each of the two entities (20; two points per route)
 	- [ ] Remember that for a REST API, the GET route is for all entities and also for a specific entity (fetched by ID)
  - [ ] Frontend (26)
-	- [ ] At least four frontend routes to create, read, update, and delete the entities created in the data model (16)
+	- [X] At least four frontend routes to create, read, update, and delete the entities created in the data model (16)
 	- [ ] Four points per route to take into account data fetching, state management, and interactivity in form submission, etc
 	- [ ] Some CSS styling; at least ten styles (10)
 	- [ ] Using a CSS framework like Bootstrap or Tailwind is substitutable for the ten style requirement. This also should help speed up the process of styling the project.
