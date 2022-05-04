@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-function NewItem() {
-  const { storeId } = useParams();
-  const [item, setItem] = useState({
-    name: '',
-    Quantity: '',
-    Price: ''
+function NewModel() {
+  const { brandId } = useParams();
+  const [model, setModel] = useState({
+    title: '',
+    description: '',
+    good_gas: false,
   });
 
 
     function handleChange(event) {
         const {name, value} = event.target;
-        setItem(prevItem => {
+        setModel(prevModel => {
             return {
-                ...prevItem,
+                ...prevModel,
                 [name]: value
             }
         })
@@ -21,15 +21,15 @@ function NewItem() {
 
     function handleClick(event) {
         event.preventDefault();
-        console.log(item);
-        const newItem = {
-            name: item.name,
-            Quantity: item.Quantity,
-            Price: item.Price
+        console.log(model);
+        const newModel = {
+            name: model.name,
+            Quantity: model.Quantity,
+            Price: model.Price
         }
-        fetch(`http://localhost:8000/stores/${storeId}/items`, {
+        fetch(`http://localhost:8000/brands/${brandId}/models`, {
             method: "POST",
-            body: JSON.stringify(newItem),
+            body: JSON.stringify(newModel),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,35 +40,24 @@ function NewItem() {
 
     return (
         <>
-            <h1>New Item for store:</h1>
+            <h1>New Model for brand:</h1>
             <form id="form" onSubmit={handleClick}>
-                <label htmlFor="ItemName"> Item Name: </label>
-                <input onChange={handleChange} id="ItemName" name="name" value={item.name}></input>
-                <br/>
-                <label htmlFor="ItemQuantity"> Item Quantity: </label>
-                <input onChange={handleChange} id="ItemNameQuantity" name="Quantity" value={item.Quantity}></input>
-                <br/>
-                <label htmlFor="ItemPrice"> Item Price </label>
-                <input onChange={handleChange} id="ItemPrice" name="Price" value={item.Price}></input>
-                <br/>
-                <button onSubmit={handleClick} type="submit" >Add an item to the store</button>
+                <div>
+                    <label htmlFor="ModelName"> Model Name: </label>
+                    <input onChange={handleChange} id="ModelName" name="name" value={model.name}></input>
+                </div>
+                <div>
+                    <label htmlFor="ModelQuantity"> Model Quantity: </label>
+                    <input onChange={handleChange} id="ModelNameQuantity" name="Quantity" value={model.Quantity}></input>
+                </div>
+                <div>
+                    <label htmlFor="ModelPrice"> Model Price </label>
+                    <input onChange={handleChange} id="ModelPrice" name="Price" value={model.Price}></input>
+                </div>
+
+                <button onSubmit={handleClick} type="submit" >Add an model to the brand</button>
             </form>
         </>
       );
 }
-export default NewItem;
-// function handleSubmit() {
-//     let item = {
-//         "name": ItemName,
-//         "Quantity": ItemQuantity,
-//         "Price": ItemPrice;
-//     };
-//
-//     fetch(`http://localhost:8000/stores/${storeId}/item`,
-//         {
-//             method: 'POST',
-//             headers: { 'Content-Type':'application/json'},
-//             mode: 'cors',
-//             body : JSON.stringify(item)
-//         });
-// }
+export default NewModel;
