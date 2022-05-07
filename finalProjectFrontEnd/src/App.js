@@ -9,7 +9,6 @@ import NewBrand from "./NewBrand";
 
 
 
-
 function App() {
   return (
     <>
@@ -18,11 +17,16 @@ function App() {
           <Route path="/" element={<Brands />} />
           <Route path="brands" element={<Brands/>} />
           <Route path="brands/new" element={<NewBrand />} />
+          <Route path="brands/:brandId/update/" element={<UpdateBrand />}/>
+          <Route path="brands/:brandId/delete/" element={<DeleteBrand />}/>
           <Route path="brands/:brandId/">
-            <Route path="" element={<Model />} />
+            <Route path="" element={<Models />} />
             <Route path="models" element={<Models />} />
+            <Route path="models/new" element={<NewModel />} />
             {/*<Route path="models/new" element={<NewModel />} />*/}
             <Route path="models/:modelId" element={<Model/>}/>
+            <Route path="models/:modelId/update" element={<UpdateModel />}/>
+            <Route path="models/:modelId/delete" element={<DeleteModel />}/>
           </Route>
         </Routes>
       </BrowserRouter>
