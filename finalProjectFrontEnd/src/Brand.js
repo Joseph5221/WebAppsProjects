@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function Brand() {
   const { brandId } = useParams();
-  const [singleBrand, setBrand] = useState({});
+  const [singleBrand, setBrand] = useState({title: ""});
 
   // Runs on page render or when brandId changes, but that happens on re-render
   useEffect(() => {
@@ -15,11 +15,11 @@ function Brand() {
   return (
     <>
       <h1>
-        {singleBrand.number} - {singleBrand.name}
+       BrandName: {singleBrand.title}
       </h1>
       <Link to="models">Models</Link>
-    <Link to={"update"}>Update Brand</Link>
-    <Link to={"delete"}>Delete Brand</Link>
+      <Link to={"update"}>Update Brand</Link>
+      <Link to={"delete"}>Delete Brand</Link>
     </>
   );
 }

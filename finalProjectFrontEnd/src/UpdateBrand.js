@@ -33,7 +33,7 @@ function UpdateBrand() {
             title: brand.title,
         }
         fetch(`http://localhost:8000/brands/`, {
-            method: "PATCH",
+            method: "PUT",
             body: JSON.stringify(newBrand),
             mode: 'cors',
             headers: {

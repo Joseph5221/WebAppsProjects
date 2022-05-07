@@ -16,7 +16,7 @@ function Brands() {
       <ul>
         {brands.map((brand) => (
           <li key={brand._id}>
-            <Link to={`/brands/${brand._id}`}>{brand.name}</Link>
+            <Link to={`/brands/${brand._id}`}>{brand.title}</Link>
           </li>
         ))}
       </ul>

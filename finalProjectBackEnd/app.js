@@ -8,8 +8,7 @@ import { indexRouter } from "./routes/index.js";
 import { usersRouter } from "./routes/users.js";
 import connect from "./lib/db.js";
 
-import StoresRouter from "./routes/stores.js";
-import ItemsRouter from "./routes/items.js";
+import BrandsRouter from "./routes/brands.js";
 
 import cors from "cors";
 
@@ -31,8 +30,7 @@ app.use(express.static(path.join(path.resolve(), "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/stores", StoresRouter);
-app.use("/items", ItemsRouter);
+app.use("/brands", BrandsRouter);
 
 
 

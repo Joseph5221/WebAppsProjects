@@ -9,7 +9,7 @@ function Models() {
     fetch(`http://localhost:8000/brands/${brandId}/models`)
       .then((body) => body.json())
       .then((json) => setModels(() => [...json]));
-  }, []);
+  }, [brandId]);
 
   return (
     <>
@@ -17,11 +17,11 @@ function Models() {
       <ul>
         {models.map((model) => (
           <li key={model._id}>
-            <Link to={`/models/${model._id}`}>{model.name}</Link>
+            <Link to={`models/${model._id}`}>{model.name}</Link>
           </li>
         ))}
       </ul>
-        <Link to={`/models/new`}>New Car Model</Link>
+        <Link to={`new`}>New Car Model</Link>
     </>
   );
 }

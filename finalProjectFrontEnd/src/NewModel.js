@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 function NewModel() {
     const { modelId, brandId } = useParams();
@@ -10,19 +10,19 @@ function NewModel() {
     });
 
     // Runs on page render or when storeId changes, but that happens on re-render
-    useEffect(() => {
-        fetch(`http://localhost:8000/models/${modelId}`)
-            .then((body) => body.json())
-            .then((json) => setModel(() => json));
-    }, []);
+    // useEffect(() => {
+    //     fetch(`http://localhost:8000/models/${modelId}`)
+    //         .then((body) => body.json())
+    //         .then((json) => setModel(() => json));
+    // }, [modelId]);
 
 
     function handleChange(event) {
-        const {title, value} = event.target;
+        const {name, value} = event.target;
         setModel(prevModel => {
             return {
                 ...prevModel,
-                [title]: value
+                [name]: value
             }
         })
     }
@@ -37,7 +37,7 @@ function NewModel() {
             good_gas: singleModel.good_gas,
             BrandID: brandId
         }
-        fetch(`http://localhost:8000/brands/`, {
+        fetch(`http://localhost:8000/brands/${brandId}/models`, {
             method: "POST",
             body: JSON.stringify(newModel),
             mode: 'cors',
@@ -53,16 +53,16 @@ function NewModel() {
             <h1>New Model:</h1>
             <form id="form" onSubmit={handleClick}>
                 <div>
-                    <label htmlFor="ModelName"> Model Name: </label>
-                    <input onChange={handleChange} id="ModelName" placeholder={singleModel.title} name="name" value={singleModel.name}></input>
+                    <label htmlFor="ModelTitle"> Model Title: </label>
+                    <input onChange={handleChange} id="ModelName" placeholder={singleModel.title} name="title" value={singleModel.title}></input>
                 </div>
                 <div>
-                    <label htmlFor="ModelQuantity"> Model Description: </label>
-                    <input onChange={handleChange} id="ModelNameQuantity" placeholder={singleModel.description} name="Quantity" value={singleModel.Quantity}></input>
+                    <label htmlFor="ModelDescription"> Model Description: </label>
+                    <input onChange={handleChange} id="ModelDescription" placeholder={singleModel.description} name="description" value={singleModel.description}></input>
                 </div>
                 <div>
-                    <label htmlFor="ModelPrice"> Is the Model Good On Gas? </label>
-                    <input type="checkbox" onChange={handleChange} id="ModelPrice" name="Price" value={singleModel.Price}></input>
+                    <label htmlFor="ModelGas"> Is the Model Good On Gas? </label>
+                    <input type="checkbox" onChange={handleChange} id="ModelGas" name="good_gas" value={singleModel.good_gas}></input>
                 </div>
 
                 <button onSubmit={handleClick} type="submit" >Update a model</button>

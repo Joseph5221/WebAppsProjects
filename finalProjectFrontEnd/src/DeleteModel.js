@@ -14,7 +14,7 @@ function DeleteBrand() {
         fetch(`http://localhost:8000/models/${modelId}`)
             .then((body) => body.json())
             .then((json) => setModel(() => json));
-    }, []);
+    }, [modelId]);
 
 
 

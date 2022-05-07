@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+//import { useParams } from "react-router-dom";
 function NewBrand() {
-  const { brandId } = useParams();
-  const [brand, setBrand] = useState([]);
+  //const { brandId } = useParams();
+  const [brand, setBrand] = useState({
+    title: ''
+  });
 
     function handleChange(event) {
-        const {title, value} = event.target;
+        const {name, value} = event.target;
         setBrand(prevBrand => {
             return {
                 ...prevBrand,
-                [title]: value
+                [name]: value
             }
         })
     }
@@ -34,10 +36,10 @@ function NewBrand() {
     return (
       <>
         <h1>New Car Brand! Whaaaat!</h1>
-        <form >
+        <form onSubmit={handleClick}>
             <div>
                 <label htmlFor="BrandName"> Brand Name: </label>
-                <input id="BrandName" name="BrandName" placeholder="Tesla?"></input>
+                <input id="BrandName" name="title" placeholder="Tesla?" onChange={handleChange} value={brand.title}></input>
             </div>
             <input type="submit" value="Add a new Brand!"></input>
         </form>

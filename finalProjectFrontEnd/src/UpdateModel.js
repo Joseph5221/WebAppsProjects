@@ -15,7 +15,7 @@ function UpdateModel() {
         fetch(`http://localhost:8000/models/${modelId}`)
             .then((body) => body.json())
             .then((json) => setModel(() => json));
-    }, []);
+    }, [modelId]);
 
 
     function handleChange(event) {
@@ -39,7 +39,7 @@ function UpdateModel() {
             BrandID: brandId
         }
         fetch(`http://localhost:8000/brands/`, {
-            method: "PATCH",
+            method: "PUT",
             body: JSON.stringify(newModel),
             mode: 'cors',
             headers: {
