@@ -55,7 +55,7 @@ function UpdateModel() {
             <form id="form" onSubmit={handleClick}>
                 <div>
                     <label htmlFor="ModelName"> Model Name: </label>
-                    <input onChange={handleChange} id="ModelName" placeholder={singleModel.title} name="name" value={singleModel.title}></input>
+                    <input onChange={handleChange} id="ModelName" placeholder={singleModel.title} name="title" value={singleModel.title}></input>
                 </div>
                 <div>
                     <label htmlFor="ModelQuantity"> Model Description: </label>

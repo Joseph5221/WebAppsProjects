@@ -15,13 +15,14 @@ function UpdateBrand() {
 
 
     function handleChange(event) {
-        const {title, value} = event.target;
+        const {name, value} = event.target;
         setBrand(prevBrand => {
             return {
                 ...prevBrand,
-                [title]: value
+                [name]: value
             }
         })
+        console.log(brand.title)
     }
 
     function handleClick(event) {
@@ -48,7 +49,7 @@ function UpdateBrand() {
             <form onSubmit={handleClick}>
                 <div>
                     <label htmlFor="BrandName"> Brand Name: </label>
-                    <input id="BrandName" onChange={handleChange} name="BrandName" placeholder="Tesla?" value={brand.title}></input>
+                    <input id="BrandName" onChange={handleChange} name="title" placeholder="Tesla?" value={brand.title}></input>
                 </div>
                 <input type="submit" value="Add a new Brand!"></input>
             </form>
