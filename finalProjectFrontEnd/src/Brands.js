@@ -20,6 +20,7 @@ function Brands() {
           </li>
         ))}
       </ul>
+        <Link to={`/brands/new`}>New Car Brand</Link>
     </>
   );
 }

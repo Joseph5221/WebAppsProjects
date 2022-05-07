@@ -18,6 +18,8 @@ function Brand() {
         {singleBrand.number} - {singleBrand.name}
       </h1>
       <Link to="models">Models</Link>
+    <Link to={"update"}>Update Brand</Link>
+    <Link to={"delete"}>Delete Brand</Link>
     </>
   );
 }

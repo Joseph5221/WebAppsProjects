@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 function Models() {
+  const { brandId } = useParams();
   const [models, setModels] = useState([]);
 
   // Analogous to ComponentDidMount; runs on component's mount and first render; runs once
   useEffect(() => {
-    fetch(`http://localhost:8000/models`)
+    fetch(`http://localhost:8000/brands/${brandId}/models`)
       .then((body) => body.json())
       .then((json) => setModels(() => [...json]));
   }, []);
@@ -20,6 +21,7 @@ function Models() {
           </li>
         ))}
       </ul>
+        <Link to={`/models/new`}>New Car Model</Link>
     </>
   );
 }

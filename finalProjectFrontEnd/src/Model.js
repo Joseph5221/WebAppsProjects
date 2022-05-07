@@ -17,7 +17,8 @@ function Model() {
       <h1>
         {singleModel.number} - {singleModel.name}
       </h1>
-      <Link to="items">Roster</Link>
+        <Link to={"update"}>Update Model</Link>
+        <Link to={"delete"}>Delete Model</Link>
     </>
   );
 }
