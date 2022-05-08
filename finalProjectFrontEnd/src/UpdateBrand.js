@@ -32,7 +32,7 @@ function UpdateBrand() {
             _id: brandId,
             title: brand.title,
         }
-        fetch(`http://localhost:8000/brands/`, {
+        fetch(`http://localhost:8000/brands/${brandId}`, {
             method: "PUT",
             body: JSON.stringify(newBrand),
             mode: 'cors',

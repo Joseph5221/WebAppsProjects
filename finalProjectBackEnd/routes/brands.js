@@ -16,9 +16,9 @@ BrandsRouter.get("/", async (req, res) => {
 
 BrandsRouter.get("/:brand_id", async (req, res) =>{
   const db = await req.app.get("db")("brands");
-  const brandId = req.params.brand_id;
+  const brandId = req.params._id;
   console.log(brandId);
-  const matchingBrand = await db.findOne({ _id: ObjectId(brandId) });
+  const matchingBrand = await db.findOne(brandId);
   res.json(matchingBrand);
 });
 
@@ -32,17 +32,14 @@ BrandsRouter.post("/", async (req, res) => {
 
 BrandsRouter.put("/:brand_id", async (req, res) => {
   const db = await req.app.get("db")("brands");
-  const replacedBrand = req.body;
-  await db.replaceOne(
-    {
-     _id: ObjectID(req.params.brand_id),
-   },
-   {
-     ...replacedBrand,
-   }
- );
+  const replacedBrand = JSON.stringify(req.body.title);
+  const query = {_id: req.body._id};
+  console.log(query);
+  console.log(replacedBrand);
+  console.log("farts1")
+  await db.replaceOne( query, replacedBrand );
 
-  res.json(replacedBrand);
+  res.status(211).json(replacedBrand);
 });
 
 BrandsRouter.delete("/:brand_id", async (req, res) => {
