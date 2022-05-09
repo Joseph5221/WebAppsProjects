@@ -49,8 +49,8 @@ db.models.insertMany([
 {
 	_id: 5,
 	title: "Corvette",
-	description: "Mid-Engine Sports Car"
-	good_gas: false;
+	description: "Mid-Engine Sports Car",
+	good_gas: false,
 	BrandID: 2
 },
 ]);
