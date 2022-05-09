@@ -42,9 +42,14 @@ BrandsRouter.put("/:brand_id", async (req, res) => {
   res.status(211).json(replacedBrand);
 });
 
+
+
 BrandsRouter.delete("/:brand_id", async (req, res) => {
+  console.log("Im getting deleted!")
   const db = await req.app.get("db")("brands");
-  await db.deleteOne({ _id: ObjectID(req.params.brand_id) });
+  const query = { _id: ObjectId(req.body._id) };
+  console.log(query);
+  await db.deleteOne(query);
   res.sendStatus(200);
 });
 

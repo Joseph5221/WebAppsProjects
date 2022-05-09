@@ -9,7 +9,7 @@ function DeleteBrand() {
 
       // Runs on page render or when brandId changes, but that happens on re-render
   useEffect(() => {
-    fetch(`http://localhost:8000/brands/${brandId}`)
+      fetch(`http://localhost:8000/brands/${brandId}`)
       .then((body) => body.json())
       .then((json) => setBrand(() => json));
   }, [brandId]);
@@ -18,9 +18,10 @@ function DeleteBrand() {
 
     function handleClick(event) {
         event.preventDefault();
-        console.log(brand);
+        console.log("I am sending a request to get deleted!");
         fetch(`http://localhost:8000/brands/${brandId}`, {
-            method: "DELETE",
+            body: JSON.stringify(brand),
+            method: 'DELETE',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +34,7 @@ function DeleteBrand() {
         <>
             <h1>DELETE ${brand.title.toUpperCase()}?</h1>
             <h2>ARE YOU SURE YOU WANT TO DELETE THIS BRAND?</h2>
-            <button onSubmit={handleClick}>DELETE ME</button>
+            <button onClick={handleClick}>DELETE ME</button>
         </>
     );
 }
