@@ -15,7 +15,7 @@ Criteria
     - [X] GET (both / and /:thingId)
       - [X] Brands
       - [X] Brand
-      - [X] Model 
+      - [ ] Model 
     - [ ] POST
       - [X] Brand
       - [ ] Model

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Brands from "./Brands";
 function UpdateBrand() {
     const { brandId } = useParams();
+    const [redirect, setRedirect] = useState(false);
     const [brand, setBrand] = useState({
         title: '',
-    })
+    });
 
     // Runs on page render or when brandId changes, but that happens on re-render
     useEffect(() => {
@@ -13,6 +15,9 @@ function UpdateBrand() {
             .then((json) => setBrand(() => json));
     }, [brandId]);
 
+    if (redirect) {
+        return <Brands />;
+    }
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -40,7 +45,8 @@ function UpdateBrand() {
                 'Content-Type': 'application/json'
             }
         })
-            .then((body) => body.json())
+            .then((body) => body.json());
+        setRedirect(true);
     }
 
     return (

@@ -17,8 +17,11 @@ function Brand() {
       <h1>
        BrandName: {singleBrand.title}
       </h1>
+        <br/>
       <Link to="models">Models</Link>
+        <br/>
       <Link to={"update"}>Update Brand</Link>
+        <br/>
       <Link to={"delete"}>Delete Brand</Link>
     </>
   );

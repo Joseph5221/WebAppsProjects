@@ -22,6 +22,7 @@ BrandsRouter.get("/:brand_id", async (req, res) =>{
   res.json(matchingBrand);
 });
 
+
 BrandsRouter.post("/", async (req, res) => {
   const db = await req.app.get("db")("brands");
   const createdBrand = req.body;
@@ -32,14 +33,10 @@ BrandsRouter.post("/", async (req, res) => {
 
 BrandsRouter.put("/:brand_id", async (req, res) => {
   const db = await req.app.get("db")("brands");
-  const replacedBrand = JSON.stringify(req.body.title);
-  const query = {_id: req.body._id};
-  console.log(query);
-  console.log(replacedBrand);
-  console.log("farts1")
+  const replacedBrand = {title: req.body.title};
+  const query = {_id: ObjectId(req.body._id)};
   await db.replaceOne( query, replacedBrand );
-
-  res.status(211).json(replacedBrand);
+  res.status(201).json(replacedBrand);
 });
 
 
