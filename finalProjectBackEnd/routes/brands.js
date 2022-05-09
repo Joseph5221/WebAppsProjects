@@ -5,7 +5,7 @@ import {ObjectId} from "mongodb";
 const BrandsRouter = express.Router();
 
 ModelsRouter.mergeParams = true;
-BrandsRouter.use("/:brand_id/models", ModelsRouter);
+BrandsRouter.use("/:brand_id/models/", ModelsRouter);
 
 BrandsRouter.get("/", async (req, res) => {
   const db = await req.app.get("db")("brands");

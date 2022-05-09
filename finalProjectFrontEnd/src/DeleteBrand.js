@@ -36,7 +36,7 @@ function DeleteBrand() {
 
     return (
         <>
-            <h1>DELETE ${brand.title.toUpperCase()}?</h1>
+            <h1>DELETE {brand.title.toUpperCase()}?</h1>
             <h2>ARE YOU SURE YOU WANT TO DELETE THIS BRAND?</h2>
             <button onClick={handleClick} >DELETE ME</button>
         </>

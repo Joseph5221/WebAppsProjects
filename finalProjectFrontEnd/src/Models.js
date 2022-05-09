@@ -6,10 +6,11 @@ function Models() {
 
   // Analogous to ComponentDidMount; runs on component's mount and first render; runs once
   useEffect(() => {
-    fetch(`http://localhost:8000/brands/${brandId}/models`)
+    fetch(`http://localhost:8000/brands/${brandId}/models/`)
       .then((body) => body.json())
       .then((json) => setModels(() => [...json]));
-  }, [brandId]);
+  }, []);
+
 
   return (
     <>
@@ -17,7 +18,7 @@ function Models() {
       <ul>
         {models.map((model) => (
           <li key={model._id}>
-            <Link to={`models/${model._id}`}>{model.name}</Link>
+            <Link to={`${model._id}`}>{model.title}</Link>
           </li>
         ))}
       </ul>

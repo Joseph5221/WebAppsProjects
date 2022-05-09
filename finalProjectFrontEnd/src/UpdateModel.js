@@ -12,18 +12,27 @@ function UpdateModel() {
 
     // Runs on page render or when storeId changes, but that happens on re-render
     useEffect(() => {
-        fetch(`http://localhost:8000/models/${modelId}`)
+        fetch(`http://localhost:8000/brands/${brandId}/models/${modelId}`)
             .then((body) => body.json())
             .then((json) => setModel(() => json));
     }, [modelId]);
 
 
     function handleChange(event) {
-        const {title, value} = event.target;
+        const {name, value} = event.target;
         setModel(prevModel => {
             return {
                 ...prevModel,
-                [title]: value
+                [name]: value
+            }
+        })
+    }
+
+    function handleOnToggle() {
+        setModel(prevState => {
+            return {
+                ...prevState,
+                good_gas : !prevState.good_gas
             }
         })
     }
@@ -32,13 +41,12 @@ function UpdateModel() {
         event.preventDefault();
         console.log(singleModel);
         const newModel = {
-            _id: modelId,
             title: singleModel.title,
             description: singleModel.description,
             good_gas: singleModel.good_gas,
             BrandID: brandId
         }
-        fetch(`http://localhost:8000/brands/`, {
+        fetch(`http://localhost:8000/brands/${brandId}/models/${modelId}`, {
             method: "PUT",
             body: JSON.stringify(newModel),
             mode: 'cors',
@@ -63,8 +71,13 @@ function UpdateModel() {
                 </div>
                 <div>
                     <label htmlFor="ModelPrice"> Is the Model Good On Gas? </label>
-                    <input type="checkbox" onChange={handleChange} id="ModelPrice" name="good_gas" value={singleModel.good_gas}/>
-                </div>
+                    <input
+                        type="checkbox"
+                        onChange={handleOnToggle}
+                        checked={singleModel.good_gas}
+                        id="ModelGas"
+                        name="good_gas"
+                        value={singleModel.good_gas}></input>                </div>
 
                 <button onSubmit={handleClick} type="submit" >Update a model</button>
             </form>

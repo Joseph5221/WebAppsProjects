@@ -3,22 +3,31 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 function Model() {
-  const { modelId } = useParams();
+  const { modelId, brandId } = useParams();
   const [singleModel, setModel] = useState({});
+  const [singleBrand, setBrand] = useState({title: ""});
 
   // Runs on page render or when storeId changes, but that happens on re-render
   useEffect(() => {
-    fetch(`http://localhost:8000/models/${modelId}`)
+    fetch(`http://localhost:8000/brands/${brandId}/models/${modelId}`)
       .then((body) => body.json())
       .then((json) => setModel(() => json));
-  }, [modelId]);
+    fetch(`http://localhost:8000/brands/${brandId}`)
+        .then((body) => body.json())
+        .then((json) => setBrand(() => json));
+
+  }, []);
+
+
   return (
     <>
       <h1>
-        {singleModel.number} - {singleModel.name}
+        {singleBrand.title} - {singleModel.title}
       </h1>
         <Link to={"update"}>Update Model</Link>
+      <br/>
         <Link to={"delete"}>Delete Model</Link>
+      <br/>
     </>
   );
 }

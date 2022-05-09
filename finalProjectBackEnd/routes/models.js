@@ -6,17 +6,18 @@ const ModelsRouter = express.Router();
 //Stuff for this assignment
 ModelsRouter.get("/", async (req, res) => {
   const db = await req.app.get("db")("models");
-  const brandId = req.params.BrandID;
-  console.log(brandId);
-  const matchingModels = await db.find({ BrandID: ObjectId(brandId) }).toArray();
+  const query = {BrandID : (req.params.brand_id).toString()}
+  const matchingModels = await db.find(query).toArray();
+  console.log(matchingModels)
   res.json(matchingModels);
 });
 
 ModelsRouter.get("/:model_id", async (req, res) =>{
   const db = await req.app.get("db")("models");
-  const modelId = req.params._id;
-  console.log(modelId);
-  const matchingModel = await db.findOne({ _id: ObjectId(modelId) });
+  const modelId = req.params.model_id;
+  const query = {_id: ObjectId(modelId)}
+  console.log(query);
+  const matchingModel = await db.findOne(query);
   res.json(matchingModel);
 });
 
@@ -32,23 +33,19 @@ ModelsRouter.post("/", async (req, res) => {
 });
 
 ModelsRouter.put("/:model_id", async (req, res) => {
-  const db = await req.app.get("db")("models");
-  const replacedModel = req.body;
-  await db.replaceOne(
-    {
-     _id: ObjectID(req.params._id),
-   },
-   {
-     ...replacedModel,
-   }
- );
-
-  res.json(replacedModel);
+    const db = await req.app.get("db")("models");
+    const replacedModel = req.body;
+    const query = {_id: ObjectId(req.params.model_id)};
+    await db.replaceOne(query, replacedModel);
+    res.status(201).json(replacedModel);
 });
 
+
 ModelsRouter.delete("/:model_id", async (req, res) => {
+  console.log("I am a model getting deleted!")
   const db = await req.app.get("db")("models");
-  await db.deleteOne({ _id: ObjectID(req.params._id) });
+  const query = {_id : ObjectId(req.body._id)}
+  await db.deleteOne(query);
   res.sendStatus(200);
 });
 
