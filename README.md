@@ -12,19 +12,20 @@ Criteria
             - [X] good_gas — boolean
             - [X] BrandID — this should be a reference to the brand's _id field
  - [ ] Backend (20)
-    - [ ] GET (both / and /:thingId)
-      - [ ] Brands
-      - [ ] Cars 
+    - [X] GET (both / and /:thingId)
+      - [X] Brands
+      - [X] Brand
+      - [X] Model 
     - [ ] POST
-        - [ ] Brands
-        - [ ] Cars
-   - [ ] PUT
-       - [ ] Brands
-       - [ ] Cars
-   - [ ] DELETE 
-       - [ ] Brands
-       - [ ] Cars
-   - [X] Remember that for a REST API, the GET route is for all entities and also for a specific entity (fetched by ID)
+      - [X] Brand
+      - [ ] Model
+    - [ ] PUT
+      - [ ] Brand
+      - [ ] Model
+    - [ ] DELETE 
+      - [X] Brand
+      - [ ] Model
+    - [X] Remember that for a REST API, the GET route is for all entities and also for a specific entity (fetched by ID)
  - [ ] Frontend (26)
     - [X] At least four frontend routes to create, read, update, and delete the entities created in the data model (16)
       - [X] "/"

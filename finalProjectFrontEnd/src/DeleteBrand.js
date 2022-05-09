@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
+import Brands from "./Brands";
 function DeleteBrand() {
     const { brandId } = useParams();
     const [brand, setBrand] = useState({
         title: '',
     })
-
+    const [redirect, setRedirect] = useState(false)
 
       // Runs on page render or when brandId changes, but that happens on re-render
   useEffect(() => {
@@ -14,7 +15,9 @@ function DeleteBrand() {
       .then((json) => setBrand(() => json));
   }, [brandId]);
 
-
+    if (redirect) {
+        return <Brands />;
+    }
 
     function handleClick(event) {
         event.preventDefault();
@@ -27,14 +30,15 @@ function DeleteBrand() {
                 'Content-Type': 'application/json'
             }
         })
-            .then((body) => body.json())
+            .then((body) => body.json());
+        setRedirect(true) // This is huge for redirection!
     }
 
     return (
         <>
             <h1>DELETE ${brand.title.toUpperCase()}?</h1>
             <h2>ARE YOU SURE YOU WANT TO DELETE THIS BRAND?</h2>
-            <button onClick={handleClick}>DELETE ME</button>
+            <button onClick={handleClick} >DELETE ME</button>
         </>
     );
 }
