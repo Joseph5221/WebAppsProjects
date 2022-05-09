@@ -16,9 +16,9 @@ BrandsRouter.get("/", async (req, res) => {
 
 BrandsRouter.get("/:brand_id", async (req, res) =>{
   const db = await req.app.get("db")("brands");
-  const brandId = req.params._id;
+  const brandId = req.params.brand_id;
   console.log(brandId);
-  const matchingBrand = await db.findOne(brandId);
+  const matchingBrand = await db.findOne({_id: ObjectId(brandId)});
   res.json(matchingBrand);
 });
 
