@@ -57,7 +57,7 @@ function UpdateBrand() {
                     <label htmlFor="BrandName"> Brand Name: </label>
                     <input id="BrandName" onChange={handleChange} name="title" placeholder="Tesla?" value={brand.title}></input>
                 </div>
-                <input type="submit" value="Add a new Brand!"></input>
+                <input type="submit" value="Change the previous Brand!"></input>
             </form>
         </>
     );

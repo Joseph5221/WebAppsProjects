@@ -5,7 +5,7 @@ function NewModel() {
     const [singleModel, setModel] = useState({
         title: "",
         description: "",
-        good_gas: false,
+        good_gas: true,
         BrandID: brandId
     });
 
@@ -23,6 +23,15 @@ function NewModel() {
             return {
                 ...prevModel,
                 [name]: value
+            }
+        })
+    }
+
+    function handleOnToggle() {
+        setModel(prevState => {
+            return {
+                ...prevState,
+                good_gas : !prevState.good_gas
             }
         })
     }
@@ -48,6 +57,8 @@ function NewModel() {
             .then((body) => body.json())
     }
 
+
+
     return (
         <>
             <h1>New Model:</h1>
@@ -62,11 +73,18 @@ function NewModel() {
                 </div>
                 <div>
                     <label htmlFor="ModelGas"> Is the Model Good On Gas? </label>
-                    <input type="checkbox" onChange={handleChange} id="ModelGas" name="good_gas" value={singleModel.good_gas}></input>
+                    <input
+                        type="checkbox"
+                        onChange={handleOnToggle}
+                        checked={singleModel.good_gas}
+                        id="ModelGas"
+                        name="good_gas"
+                        value={singleModel.good_gas}></input>
                 </div>
 
                 <button onSubmit={handleClick} type="submit" >Update a model</button>
             </form>
+            <button onClick={() => console.log(singleModel)}>Model?</button>
         </>
       );
 }

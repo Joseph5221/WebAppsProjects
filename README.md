@@ -20,7 +20,7 @@ Criteria
       - [X] Brand
       - [ ] Model
     - [ ] PUT
-      - [ ] Brand
+      - [X] Brand
       - [ ] Model
     - [ ] DELETE 
       - [X] Brand
