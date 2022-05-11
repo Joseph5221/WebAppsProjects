@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Brand() {
   const { brandId } = useParams();
+  const navigate = useNavigate();
   const [singleBrand, setBrand] = useState({title: ""});
 
   // Runs on page render or when brandId changes, but that happens on re-render
@@ -12,6 +13,12 @@ function Brand() {
       .then((body) => body.json())
       .then((json) => setBrand(() => json));
   }, [brandId]);
+
+
+  function handleGoBackwards(event){
+    navigate(`/brands`);
+  };
+
   return (
     <>
       <h1>
@@ -23,6 +30,11 @@ function Brand() {
       <Link to={"update"}>Update Brand</Link>
         <br/>
       <Link to={"delete"}>Delete Brand</Link>
+      <br/>
+      <br/>
+      <form onSubmit={handleGoBackwards}>
+        <input type="submit" value="Back to Brands"></input>
+      </form>
     </>
   );
 }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Model() {
   const { modelId, brandId } = useParams();
+  const navigate = useNavigate();
   const [singleModel, setModel] = useState({});
   const [singleBrand, setBrand] = useState({title: ""});
 
@@ -18,6 +19,10 @@ function Model() {
 
   }, [brandId, modelId]);
 
+  
+  function handleGoBackwards(event){
+    navigate(`/brands/${brandId}/models`);
+  };
 
   return (
     <>
@@ -27,7 +32,11 @@ function Model() {
         <Link to={"update"}>Update Model</Link>
       <br/>
         <Link to={"delete"}>Delete Model</Link>
+        <br/>
       <br/>
+      <form onSubmit={handleGoBackwards}>
+        <input type="submit" value="Back to Models"></input>
+      </form>
     </>
   );
 }

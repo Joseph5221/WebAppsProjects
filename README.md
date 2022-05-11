@@ -1,4 +1,28 @@
-Criteria
+/////////////////////////////
+//Team Member Contributions//
+/////////////////////////////
+
+Jaidynn Fohr: 0.33
+John Konchar: 0.33
+Joseph Spielman: 0.33
+
+////////////////////////////////
+//Notes on Running the Project//
+////////////////////////////////
+
+Backend:
+The backend uses MongoDB.
+Start with "npm start" and view in localhost:8000
+
+Frontend:
+The frontend uses React with Hooks and a Bootstrap CSS styling framework.
+You may need to run "react-scripts start" first and/or install Bootstrap.
+Start with "npm start" and view in localhost:3000
+
+////////////
+//Criteria//
+////////////
+
  - [X] Data Model (6)
     - [X] The final project includes at least two models/collections (6; three points for each entity)
     - [X] See the Todo Project description for an idea of what this looks like
@@ -40,10 +64,10 @@ Criteria
 	  - [X] "/brands/:brandId/models/:modelId/update"
 	  - [X] "/brands/:brandId/models/:modelId/delete"
 	- [X] Four points per route to take into account data fetching, state management, and interactivity in form submission, etc
-    - [ ] Some CSS styling; at least ten styles (10)
-    - [ ] Using a CSS framework like Bootstrap or Tailwind is substitutable for the ten style requirement. This also should help speed up the process of styling the project.
+    - [X] Some CSS styling; at least ten styles (10)
+    - [X] Using a CSS framework like Bootstrap or Tailwind is substitutable for the ten style requirement. This also should help speed up the process of styling the project.
  - [ ] Grading (6)
-    - [ ] Zip up your code (2)
-    - [ ] Include a README with notes on how to run the project if any special steps were taken (2)
-    - [ ] Include a text file rating the effort each team member put into the project
-    - [ ] These ratings should add up to 1; if all team members contributed equitably, rate each person 0.33; adjust as-needed (2)
+    - [X] Zip up your code (2)
+    - [X] Include a README with notes on how to run the project if any special steps were taken (2)
+    - [X] Include a text file rating the effort each team member put into the project
+    - [X] These ratings should add up to 1; if all team members contributed equitably, rate each person 0.33; adjust as-needed (2)

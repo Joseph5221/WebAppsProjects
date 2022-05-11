@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 function Models() {
   const { brandId } = useParams();
+  const navigate = useNavigate();
   const [models, setModels] = useState([]);
 
   // Analogous to ComponentDidMount; runs on component's mount and first render; runs once
@@ -11,6 +12,9 @@ function Models() {
       .then((json) => setModels(() => [...json]));
   }, [brandId]);
 
+  function handleGoBackwards(event){
+    navigate(`/brands/${brandId}`);
+  };
 
   return (
     <>
@@ -22,7 +26,12 @@ function Models() {
           </li>
         ))}
       </ul>
-        <Link to={`new`}>New Car Model</Link>
+      <Link to={`new`}>New Car Model</Link>
+      <br/>
+      <br/>
+      <form onSubmit={handleGoBackwards}>
+        <input type="submit" value="Back to Brand"></input>
+      </form>
     </>
   );
 }
