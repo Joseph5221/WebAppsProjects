@@ -1,20 +1,15 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 function NewModel() {
     const { modelId, brandId } = useParams();
+    const navigate = useNavigate();
     const [singleModel, setModel] = useState({
         title: "",
         description: "",
         good_gas: true,
         BrandID: brandId
     });
-
-    // Runs on page render or when storeId changes, but that happens on re-render
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/models/${modelId}`)
-    //         .then((body) => body.json())
-    //         .then((json) => setModel(() => json));
-    // }, [modelId]);
 
 
     function handleChange(event) {
@@ -55,6 +50,7 @@ function NewModel() {
             }
         })
             .then((body) => body.json())
+        navigate(`/brands/${brandId}/models`);
     }
 
 
@@ -82,9 +78,8 @@ function NewModel() {
                         value={singleModel.good_gas}></input>
                 </div>
 
-                <button onSubmit={handleClick} type="submit" >Update a model</button>
+                <button onSubmit={handleClick} type="submit" >Save the new model!</button>
             </form>
-            <button onClick={() => console.log(singleModel)}>Model?</button>
         </>
       );
 }

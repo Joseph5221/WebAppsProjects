@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function UpdateModel() {
     const { modelId, brandId } = useParams();
+    const navigate = useNavigate();
     const [singleModel, setModel] = useState({
         	title: "",
 	        description: "",
@@ -10,13 +11,13 @@ function UpdateModel() {
 	        BrandID: brandId
     });
 
+  
     // Runs on page render or when storeId changes, but that happens on re-render
     useEffect(() => {
         fetch(`http://localhost:8000/brands/${brandId}/models/${modelId}`)
             .then((body) => body.json())
             .then((json) => setModel(() => json));
-    }, [modelId]);
-
+    }, [modelId, brandId]);
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -55,6 +56,7 @@ function UpdateModel() {
             }
         })
             .then((body) => body.json())
+        navigate(`/brands/${brandId}/models`);
     }
 
     return (
@@ -86,5 +88,3 @@ function UpdateModel() {
 }
 
 export default UpdateModel;
-
-// TODO HANDLE CHECKBOX HANDLECHANGE

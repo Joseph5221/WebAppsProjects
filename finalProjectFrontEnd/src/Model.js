@@ -16,7 +16,7 @@ function Model() {
         .then((body) => body.json())
         .then((json) => setBrand(() => json));
 
-  }, []);
+  }, [brandId, modelId]);
 
 
   return (

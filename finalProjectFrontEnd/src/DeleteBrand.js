@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react";
-import {useParams} from "react-router-dom";
-import Brands from "./Brands";
+import {useParams, useNavigate} from "react-router-dom";
+
 function DeleteBrand() {
     const { brandId } = useParams();
+    const navigate = useNavigate();
     const [brand, setBrand] = useState({
         title: '',
     })
-    const [redirect, setRedirect] = useState(false)
 
-      // Runs on page render or when brandId changes, but that happens on re-render
-  useEffect(() => {
-      fetch(`http://localhost:8000/brands/${brandId}`)
-      .then((body) => body.json())
-      .then((json) => setBrand(() => json));
-  }, [brandId]);
-
-    if (redirect) {
-        return <Brands />;
-    }
+    // Runs on page render or when brandId changes, but that happens on re-render
+    useEffect(() => {
+        fetch(`http://localhost:8000/brands/${brandId}`)
+        .then((body) => body.json())
+        .then((json) => setBrand(() => json));
+    }, [brandId]);
 
     function handleClick(event) {
         event.preventDefault();
@@ -31,7 +27,7 @@ function DeleteBrand() {
             }
         })
             .then((body) => body.json());
-        setRedirect(true) // This is huge for redirection!
+        navigate(`/brands`); // This is huge for redirection!
     }
 
     return (

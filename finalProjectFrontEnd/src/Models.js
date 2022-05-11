@@ -9,7 +9,7 @@ function Models() {
     fetch(`http://localhost:8000/brands/${brandId}/models/`)
       .then((body) => body.json())
       .then((json) => setModels(() => [...json]));
-  }, []);
+  }, [brandId]);
 
 
   return (

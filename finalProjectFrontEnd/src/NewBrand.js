@@ -1,16 +1,12 @@
 import { useState } from "react";
-import Brands from "./Brands";
-//import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 function NewBrand() {
-  //const { brandId } = useParams();
-  const [redirect, setRedirect] = useState(false)
+  const navigate = useNavigate();
   const [brand, setBrand] = useState({
     title: ''
   });
 
-    if (redirect) {
-        return <Brands />;
-    }
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -37,7 +33,7 @@ function NewBrand() {
             }
         })
             .then((body) => body.json())
-        setRedirect(true)
+        navigate(`/brands`);
     }
 
     return (
