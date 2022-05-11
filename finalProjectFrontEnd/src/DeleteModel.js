@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
+
 function DeleteBrand() {
     const { modelId, brandId } = useParams();
+    const navigate = useNavigate();
     const [singleModel, setModel] = useState({
         title: "",
         description: "",
@@ -15,7 +17,6 @@ function DeleteBrand() {
             .then((body) => body.json())
             .then((json) => setModel(() => json));
     }, [modelId]);
-
 
 
     function handleClick(event) {
@@ -37,6 +38,7 @@ function DeleteBrand() {
             }
         })
             .then((body) => body.json())
+        navigate(`/brands/${brandId}/models`);
     }
 
     return (
