@@ -21,7 +21,6 @@ function DeleteBrand() {
 
     function handleClick(event) {
         event.preventDefault();
-        console.log(singleModel);
         const newModel = {
             _id: modelId,
             title: "",
@@ -38,7 +37,7 @@ function DeleteBrand() {
             }
         })
             .then((body) => body.json())
-        navigate(`/brands/${brandId}/models`);
+            .then(navigate(`/brands/${brandId}/models`));
     }
 
     return (

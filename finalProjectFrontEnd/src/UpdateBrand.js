@@ -24,7 +24,6 @@ function UpdateBrand() {
                 [name]: value
             }
         })
-        console.log(brand.title)
     }
 
     function handleClick(event) {
@@ -42,8 +41,8 @@ function UpdateBrand() {
                 'Content-Type': 'application/json'
             }
         })
-            .then((body) => body.json());
-        navigate(`/brands`);
+            .then((body) => body.json())
+            .then(navigate(`/brands`));
     }
 
     return (

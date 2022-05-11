@@ -33,7 +33,7 @@ function NewBrand() {
             }
         })
             .then((body) => body.json())
-        navigate(`/brands`);
+            .then(navigate(`/brands`));
     }
 
     return (

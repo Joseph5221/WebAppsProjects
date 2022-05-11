@@ -56,7 +56,7 @@ function UpdateModel() {
             }
         })
             .then((body) => body.json())
-        navigate(`/brands/${brandId}/models`);
+            .then(navigate(`/brands/${brandId}/models`));
     }
 
     return (

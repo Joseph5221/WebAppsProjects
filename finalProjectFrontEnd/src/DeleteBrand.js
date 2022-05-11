@@ -26,8 +26,8 @@ function DeleteBrand() {
                 'Content-Type': 'application/json'
             }
         })
-            .then((body) => body.json());
-        navigate(`/brands`); // This is huge for redirection!
+            .then((body) => body.json())
+            .then(navigate(`/brands`)); // This is huge for redirection!
     }
 
     return (

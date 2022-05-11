@@ -26,7 +26,6 @@ ModelsRouter.get("/:model_id", async (req, res) =>{
 ModelsRouter.post("/", async (req, res) => {
   const db = await req.app.get("db")("models");
   const createdModel = req.body;
-  //createdModel.BrandID = ObjectId(req.params.BrandID);
   console.log(createdModel);
   db.insertOne(createdModel);
   res.status(201).json(createdModel);
